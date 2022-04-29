@@ -2,6 +2,8 @@ package com.bezkoder.springjwt.repository;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +16,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
   Boolean existsByUsername(String username);
 
   Boolean existsByEmail(String email);
+  @Transactional
+void deleteUserById(Long id);
+
+Optional<User> findById(Long id);
+
+
 }
